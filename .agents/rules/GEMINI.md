@@ -4,7 +4,7 @@ trigger: always_on
 
 # Project Overview & Context
 - **Project Name**: Nusa Property Back-end
-- **Description**: REST API yang menangani integrasi untuk android app.
+- **Description**: REST API yang menangani integrasi untuk android app nusa property.
 - **Primary Tech Stack**: Python, FastAPI, Pydantic v2, SQLAlchemy/Prisma, Uvicorn, PostgreSQL.
 
 ## Architecture & Folder Structure
