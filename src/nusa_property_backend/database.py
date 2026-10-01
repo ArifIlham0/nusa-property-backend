@@ -23,5 +23,23 @@ def get_db() -> Generator[Session, None, None]:
 
 
 def init_db() -> None:
+    from sqlalchemy import text
     from . import models
     Base.metadata.create_all(bind=engine)
+    
+    with engine.begin() as conn:
+        conn.execute(
+            text("""
+                DO $$
+                BEGIN
+                    IF NOT EXISTS (
+                        SELECT 1 FROM information_schema.columns 
+                        WHERE table_name = 'user_profiles' AND column_name = 'user_id'
+                    ) THEN
+                        ALTER TABLE user_profiles 
+                        ADD COLUMN user_id VARCHAR(50) REFERENCES users(id) ON DELETE CASCADE;
+                    END IF;
+                END $$;
+            """)
+        )
+
