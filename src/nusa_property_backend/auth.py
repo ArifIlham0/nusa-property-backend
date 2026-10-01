@@ -11,7 +11,7 @@ from sqlalchemy.orm import Session
 from .database import get_db
 from .models import User
 
-SECRET_KEY = os.getenv("AUTH_SECRET_KEY", "nusa_property_super_secret_jwt_key_2026")
+SECRET_KEY = os.getenv("AUTH_SECRET_KEY")
 TOKEN_EXPIRE_SECONDS = 30 * 24 * 3600
 
 security = HTTPBearer(auto_error=False)
